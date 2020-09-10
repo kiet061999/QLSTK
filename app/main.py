@@ -1,7 +1,8 @@
 from app import app, login, dao
 from flask_login import login_user
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, url_for
 from app.models import *
+from app.admin import *
 import hashlib
 
 
@@ -12,11 +13,12 @@ def index():
 
 @login.user_loader
 def user_load(user_id):
-    return User.query.get(user_id)
+    return dao.load(user_id)
 
 
 @app.route("/login-admin", methods=['get', 'post'])
 def login_admin():
+    errmsg = ""
     if request.method == 'POST':
         username = request.form.get("username")
         password = request.form.get("password")
@@ -24,7 +26,16 @@ def login_admin():
         user = dao.validate_user(username.strip(), password)
         if user:
             login_user(user=user)
+        else:
+            errmsg = "Username or password is incorrect!"
+            return render_template("admin/login.html", errmsg=errmsg)
+            # return url_for("reload_admin", errmsg=errmsg)
 
+    return redirect("/admin")
+
+
+@app.route("/admin")
+def reload_admin():
     return redirect("/admin")
 
 

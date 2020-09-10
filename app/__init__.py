@@ -13,6 +13,6 @@ app.secret_key = '\xeen\x83\xfe\xe2\xd9ZS\x02\x7f_f\xeb\xde\xa2\xd4'
 
 db = SQLAlchemy(app=app)
 
-admin = Admin(app=app, name= "QUAN LY SO TIET KIEM", template_mode="bootstrap3")
+admin = Admin(app=app, name="QUAN LY SO TIET KIEM", template_mode="bootstrap3")
 
 login = LoginManager(app=app)

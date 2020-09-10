@@ -4,6 +4,11 @@
     {% if current_user.is_authenticated %}
         <h1>Wellcome <span class="text-success">{{ current_user.name }}</span> to Admin page!!!</h1>
     {% else %}
+        {% if errmsg %}
+            <div class="text-alert">
+                {{ errmsg }}
+            </div>
+        {% endif %}
         {% include 'admin/login.html' %}
     {% endif %}
 {% endblock %}

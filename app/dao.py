@@ -9,4 +9,5 @@ def validate_user(username, password):
                              User.password == password).first()
 
 
-
+def load(user_id):
+    return User.query.get(user_id)

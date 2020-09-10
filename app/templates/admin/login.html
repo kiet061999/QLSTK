@@ -1,6 +1,12 @@
 <h1 class="text-center text-info">LOGIN</h1>
+{% if errmsg %}
+    <div class="text-alert">
+        {{ errmsg }}
+    </div>
+{% endif %}
 <form action="{{ url_for('login_admin') }}" method="post">
     <div class="container">
+        <label class="text-danger" id="note"></label>
         <div class="form-group">
             <label>Username</label>
             <input type="text" name="username" class="form-control" placeholder="Username"/>
