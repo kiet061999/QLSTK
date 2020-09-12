@@ -24,12 +24,15 @@ def login_admin():
         password = request.form.get("password")
         password = str(hashlib.md5(password.strip().encode("utf-8")).hexdigest())
         user = dao.validate_user(username.strip(), password)
-        if user:
+        if user and user.user_role == Role.ADMIN:
             login_user(user=user)
         else:
-            errmsg = "Username or password is incorrect!"
-            return render_template("admin/login.html", errmsg=errmsg)
-            # return url_for("reload_admin", errmsg=errmsg)
+            if user and user.user_role == Role.USER:
+                render_template("index.html")
+            else:
+                errmsg = "Username or password is incorrect!"
+                return render_template("admin/login.html", errmsg=errmsg)
+                # return url_for("reload_admin", errmsg=errmsg)
 
     return redirect("/admin")
 
@@ -37,6 +40,11 @@ def login_admin():
 @app.route("/admin")
 def reload_admin():
     return redirect("/admin")
+
+
+# @app.route('/cart')
+# def cart():
+#     return render_template('cart.html')
 
 
 if __name__ == "__main__":

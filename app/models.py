@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, Boolean, Float, DateTime, ForeignKey
+import enum
+from sqlalchemy import Column, Integer, String, Boolean, Float, DateTime, ForeignKey,Enum
 from app import db
-from flask_login import UserMixin
+from flask_login import UserMixin, AnonymousUserMixin
 from sqlalchemy.orm import relationship
 
 
@@ -14,6 +15,11 @@ class LoaiKyHan(db.Model):
 
     def __str__(self):
         return self.tenLoai
+
+
+class Role(enum.Enum):
+    ADMIN = 0
+    USER = 1
 
 
 class KhachHang(db.Model):
@@ -88,6 +94,7 @@ class User(db.Model, UserMixin):
     active = Column(Boolean, default=True)
     username = Column(String(50), nullable=False)
     password = Column(String(50), nullable=False)
+    user_role = Column(Enum(Role), default=Role.USER)
 
     def __str__(self):
         return self.name
