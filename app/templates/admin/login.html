@@ -1,22 +1,32 @@
-<h1 class="text-center text-info">LOGIN</h1>
-{% if errmsg %}
-    <div class="text-alert">
-        {{ errmsg }}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form action="{{ url_for('login') }}" method="post">
+            <div class="container">
+
+                <div class="card shadow col-md-4 mr-auto ml-auto">
+                    <div class="card-body">
+                        <h1 class="text-info text-center">LOGIN</h1>
+                        <h6 class="text-center text-dark">Login Passbook System with Admin permission</h6></br>
+                        <div>
+                            <input type="text" name="username" class="form-control" placeholder="Username" required/> </br>
+                        </div>
+                        <div>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required/> </br>
+                        </div>
+                        <div class="col-5 ml-auto">
+                            <input type="submit" value="Login" class="col-md-4 btn btn-primary"/>|
+                            <input type="button" class="btn btn-danger" href="{{ url_for('index') }}" value="Turn Back"/>
+                        </div>
+                        {% if errmsg %}
+                            <div>
+                                <p><h6 class="text-danger text-center">{{ errmsg }}</h6></p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-{% endif %}
-<form action="{{ url_for('login_admin') }}" method="post">
-    <div class="container">
-        <label class="text-danger" id="note"></label>
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" name="username" class="form-control" placeholder="Username"/>
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" placeholder="Password" />
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Login" class="btn btn-danger"/>
-        </div>
-    </div>
-</form>
+</div>

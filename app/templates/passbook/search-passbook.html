@@ -1,0 +1,68 @@
+{% extends "base/master.html"%}
+
+{% block body %}
+<br><br><br><br><br><br>
+<div class="super_container page_body_block">
+    <div class="form-group">
+        <div class="col-md-4 ml-auto mr-auto">
+            <form>
+                <div class="input-group mb-3">
+                    <input type="text" name="search_passbook" class="form-control" placeholder="Search Passbook by ID">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-primary" type="submit" >
+                            <i class="fa fa-search text-light"> Search</i>
+                        </button>
+<!--                            <input class="btn btn-primary" type="submit" value="Tìm">-->
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="row">
+            <div class="col-md-10 bg-light ml-auto mr-auto">
+                {% if passbook %}
+                    <hr>
+                    <h3 class="col-md-2 text-center text-success mr-auto ml-auto">RESULT</h3>
+                    <hr>
+                    <table class="table-hover mr-auto ml-auto">
+                        <tr>
+                            <th>Passbook ID:</th>
+                            <td>{{ passbook.maSo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Customer ID:</th>
+                            <td>{{ passbook.maKH }}</td>
+                        </tr>
+                        <tr>
+                            <th>Balance Amount:</th>
+                            <td>{{ passbook.soDu }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date Create:</th>
+                            <td>{{ passbook.ngayLapSo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description:</th>
+                            <td>{{ passbook.chuThich }}</td>
+                        </tr>
+                        <tr>
+                            <th>Interest:</th>
+                            <td>{{ passbook.lai }}%</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center"><a href="#">Edit</a> |
+                            <a href="#">Show detail</a></td>
+                        </tr>
+                    </table>
+                <br><br>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block footer%}
+{% endblock %}

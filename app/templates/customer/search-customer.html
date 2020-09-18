@@ -1,0 +1,87 @@
+{% extends "base/master.html"%}
+
+{% block body %}
+<br><br><br><br><br><br>
+<div class="super_container page_body_block">
+    <div class="form-group">
+        <div class="col-md-6 ml-auto mr-auto">
+            <form>
+                <div class="input-group mb-3">
+                    <input type="text" name="search_customer_by_id_card" class="form-control" placeholder="Search Customer by ID card">
+                    <input type="text" name="search_customer_by_id" class="form-control" placeholder="Search Customer by ID">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-primary" type="submit" >
+                            <i class="fa fa-search text-light"> Search</i>
+                        </button>
+<!--                            <input class="btn btn-primary" type="submit" value="Tìm">-->
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="row">
+            <div class="col-md-10 bg-light ml-auto mr-auto">
+                {% if customer %}
+                    <hr>
+                    <h3 class="col-md-2 text-center text-success mr-auto ml-auto">RESULT</h3>
+                    <hr>
+                {% for cus in customer %}
+                    <table class="container table table-hover table-striped mr-auto ml-auto">
+                        <tr>
+                            <th class="text-right">ID:</th>
+                            <td>{{ cus.maKH }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Name:</th>
+                            <td>{{ cus.tenKH }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">ID Card:</th>
+                            <td>{{ cus.cmnd }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Address:</th>
+                            <td>{{ cus.diaChi }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Birthday:</th>
+                            <td>{{ cus.ngaySinh }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Gender:</th>
+                            <td>
+                                {% if cus.gioiTinh == gender.UNKNOWN %}
+                                    Chưa có
+                                {% else %}
+                                    {% if cus.gioiTinh == gender.MALE%}
+                                        Nam
+                                    {% else%}
+                                        Nữ
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Phone Numer:</th>
+                            <td>{{ cus.sDT }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center"><a href="{{ url_for('customer_edit', customer_id = cus.maKH )}}">Edit</a> |
+                            <a href="#">Show detail</a></td>
+                        </tr>
+                    </table>
+                    <hr class="bg-dark shadow"><br>
+                {% endfor %}
+                {% else %}
+                    <h3 class="text-danger text-center"><b>{{ errmsg }}</b></h3>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block footer%}
+{% endblock %}

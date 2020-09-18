@@ -443,11 +443,11 @@ section
 {
 
 }
-.shopping_cart
+.login_page
 {
 	display: inline-block;
 }
-.shopping_cart a svg
+.login_page a svg
 {
 	display: inline-block;
 	width: 20px;
@@ -459,13 +459,13 @@ section
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
-.shopping_cart a:hover svg,
-.shopping_cart a:hover div
+.login_page a:hover svg,
+.login_page a:hover div
 {
 	fill: #e95a5a;
 	color: #e95a5a;
 }
-.shopping_cart a div
+.login_page a div
 {
 	display: inline-block;
 	vertical-align: middle;
@@ -479,7 +479,7 @@ section
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
-.shopping_cart a div span
+.login_page a div span
 {
 	margin-left: 4px;
 }
@@ -668,6 +668,11 @@ section
 	width: 100%;
 	margin-top: 30px;
 	margin-bottom: 30px;
+}
+.page_body_block
+{
+    margin-top: 80px;
+    margin-bottom: 200px
 }
 .page_menu_nav
 {

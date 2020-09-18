@@ -1,0 +1,48 @@
+{% extends "base/master.html" %}
+
+{% block body %}
+<br><br><br>
+<div class="super_container page_body_block">
+    <h2 class="text-center"><b>Customer List</b></h2>
+{{ pagination.links}}
+<table class="table table-bordered table-dark table-striped table-hover text-center">
+    <tr>
+        <th>
+            Mã khách hàng
+        </th>
+        <th>
+            Tên khách hàng
+        </th>
+        <th>
+            Số chứng minh thư
+        </th>
+        <th>
+            Giới tính
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+    </tr>
+    {% for cus in customers %}
+    <tr>
+        <td class="text-right">{{ cus.maKH }}</td>
+        <td>{{ cus.tenKH }}</td>
+        <td>{{ cus.cmnd }}</td>
+        {% if cus.gioiTinh == gender.UNKNOWN %}
+            <td>Chưa có</td>
+        {% else %}
+            {% if cus.gioiTinh == gender.MALE%}
+                <td>Nam</td>
+            {% else%}
+                <td>Nữ</td>
+            {% endif %}
+        {% endif %}
+        <td>{{ cus.sDT }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}
+
+{% block footer%}
+{% endblock %}

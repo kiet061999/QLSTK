@@ -1,27 +1,9 @@
-/* JS Document */
-
-/******************************
-
-[Table of Contents]
-
-1. Vars and Inits
-2. Set Header
-3. Init Home Slider
-4. Init Search
-5. Init Menu
-6. Init Isotope
-
-
-******************************/
-
 $(document).ready(function()
 {
 	"use strict";
 
-	/* 
-
+	/*
 	1. Vars and Inits
-
 	*/
 
 	var header = $('.header');
@@ -45,10 +27,8 @@ $(document).ready(function()
 	initMenu();
 	initIsotope();
 
-	/* 
-
+	/*
 	2. Set Header
-
 	*/
 
 	function setHeader()
@@ -63,10 +43,8 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
-
+	/*
 	3. Init Home Slider
-
 	*/
 
 	function initHomeSlider()
@@ -141,10 +119,8 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
-
+	/*
 	4. Init Search
-
 	*/
 
 	function initSearch()
@@ -161,10 +137,8 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
-
+	/*
 	5. Init Menu
-
 	*/
 
 	function initMenu()
@@ -180,7 +154,7 @@ $(document).ready(function()
 				if(!menuActive)
 				{
 					openMenu();
-					
+
 					$(document).one('click', function cls(e)
 					{
 						if($(e.target).hasClass('menu_mm'))
@@ -253,10 +227,8 @@ $(document).ready(function()
 		menuActive = false;
 	}
 
-	/* 
-
+	/*
 	6. Init Isotope
-
 	*/
 
 	function initIsotope()
@@ -299,3 +271,21 @@ $(document).ready(function()
 	}
 
 });
+
+
+function addCustomer(){
+    if (confirm("Bạn chắc chắn đã điền đúng thông tin?") == true){
+        fetch("/add-customer",{
+            "method": "post",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json()).then(data => {
+            if(data.status == 200){
+                location.reload()
+            } else {
+                alert("Tạo khách hàng thất bại!")
+            }
+        }).catch(err => alert("Hệ thống lỗi!"))
+    }
+}

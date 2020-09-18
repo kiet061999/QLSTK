@@ -1,0 +1,65 @@
+{% extends "base/master.html" %}
+
+{% block body %}
+<br><br><br><br><br><br>
+<div class="super_container page_body_block">
+    <form action="{{ url_for('add_customer_main') }}" method="post">
+            <div class="container">
+                <div class="card shadow col-md-5 ml-auto">
+                    <div class="card-body">
+                        <h6 class="text-center text-dark">Add-Customer</h6></br>
+                        <div>
+                            <input type="text" name="name" class="form-control" placeholder="Name" required/> </br>
+                        </div>
+                        <div>
+                            <input type="number" name="idcard" class="form-control" placeholder="ID card" required/> </br>
+                        </div>
+                        <div>
+                            <input type="text" name="addr" class="form-control" placeholder="Address" /> </br>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label class="btn">Birthday
+                                </label>
+                            </div>
+                            <input type="date" name="birthday" class="form-control" placeholder="Birthday" /> </br>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <label>Gender</label>
+                                <div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label" for="male">
+                                        <input type="radio" class="form-check-input" id="male" name="gender" value="Male" >Male
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label" for="female">
+                                        <input type="radio" class="form-check-input" id="female" name="gender" value="Female" >Female
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label" for="unknown">
+                                        <input type="radio" class="form-check-input" id="unknown" name="gender" value="Unknown" checked>Unknown
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></br>
+                        <div>
+                            <input type="number" name="phone_num" class="form-control" placeholder="Phone Number" required/> </br>
+                        </div>
+                        <div class="col mr-auto ml-auto">
+                            <input type="submit" onclick="addCustomer()" value="Submit" class="btn btn-primary "/> |
+                            <a type="button" href="{{ url_for('index') }}" class="btn btn-danger"/>Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>
+<br><br>
+{% endblock %}
+
+<!--{% block footer%}-->
+<!--{% endblock %}-->

@@ -1,0 +1,46 @@
+{% extends "base/master.html" %}
+
+{% block body %}
+<br><br><br>
+<div class="super_container page_body_block">
+    <h2 class="text-center"><b>Passbook List</b></h2>
+{{ pagination.links}}
+<table class="table table-bordered table-hover table-striped table-dark thead-light ">
+    <tr>
+        <th>
+            Mã sổ
+        </th>
+        <th>
+            Số dư
+        </th>
+        <th>
+            Mã chủ sổ
+        </th>
+        <th>
+            Ngày lập sổ
+        </th>
+        <th>
+            Loại sổ
+        </th>
+    </tr>
+    {% for passb in passbooks %}
+    <tr>
+        <td>{{ passb.maSo }}</td>
+        <td>{{ passb.soDu }}</td>
+        <td>{{ passb.maKH }}</td>
+        <td>{{ passb.ngayLapSo }}</td>
+        <td>
+            {% for ty in type %}
+                {% if passb.maLoaiSo == ty.maLoaiSo %}
+                    {{ ty.tenLoaiSo}}
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}
+
+{% block footer%}
+{% endblock %}
